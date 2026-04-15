@@ -1,0 +1,19 @@
+{
+  "name": "setup-snx-rs-vpn-action",
+  "version": "1.0.0",
+  "description": "GitHub Action to install snx-rs, connect to Check Point VPN, and clean up automatically.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && npx @vercel/ncc build index.js -o dist --minify",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/tool-cache": "^2.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4"
+  },
+  "private": true,
+  "license": "Apache-2.0"
+}
