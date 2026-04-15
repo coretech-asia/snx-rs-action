@@ -2,8 +2,6 @@
 
 GitHub Action for installing [`snx-rs`](https://github.com/ancwrd1/snx-rs), starting command mode, connecting to a Check Point VPN tunnel, and automatically disconnecting in the post step.
 
-This action is modeled after post-cleanup actions like `Boostport/setup-cloudflare-warp`, but it uses [`ancwrd1/snx-rs`](https://github.com/ancwrd1/snx-rs) and vendors the installer logic directly so it can expose a JavaScript `post` hook.
-
 ## Usage
 
 ```yaml
@@ -11,7 +9,7 @@ steps:
   - uses: actions/checkout@v6
 
   - name: Connect to Check Point VPN
-    uses: coretech-asia/setup-snx-rs-vpn-action@v1
+    uses: coretech-asia/snx-rs-action@v1
     with:
       server-name: vpn.example.com
       login-type: vpn_Username_Password
@@ -69,4 +67,4 @@ npm run build
 
 ## Local E2E
 
-For local `act`-based end-to-end runs against a real VPN, use the harness in [e2e/README.md](/home/flame/Desktop/Projects/Coretech/gs25/snx-rs-action/e2e/README.md). It provides a privileged runner image, an `act` wrapper script, and a secrets template for `/dev/net/tun`-capable runs.
+For local `act`-based end-to-end runs against a real VPN, use the harness in [e2e/README.md](e2e/README.md). It provides a privileged runner image, an `act` wrapper script, and a secrets template for `/dev/net/tun`-capable runs.
