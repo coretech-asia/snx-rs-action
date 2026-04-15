@@ -3,33 +3,6 @@ const assert = require("node:assert/strict");
 
 const { __test } = require("../lib/setup-snx-rs-vpn");
 
-test("normalizeVersionedTag preserves latest and adds leading v when needed", () => {
-  assert.equal(__test.normalizeVersionedTag("latest"), "latest");
-  assert.equal(__test.normalizeVersionedTag("5.3.0"), "v5.3.0");
-  assert.equal(__test.normalizeVersionedTag("v5.3.0"), "v5.3.0");
-});
-
-test("selectAsset prefers tar.xz archives over .run installers", async () => {
-  const asset = await __test.selectAsset(
-    {
-      assets: [
-        { name: "snx-rs-v5.3.0-linux-x86_64.run" },
-        { name: "snx-rs-v5.3.0-linux-x86_64.tar.gz" },
-        { name: "snx-rs-v5.3.0-linux-x86_64.tar.xz" },
-      ],
-    },
-    "linux",
-    "x64",
-  );
-
-  assert.equal(asset.name, "snx-rs-v5.3.0-linux-x86_64.tar.xz");
-});
-
-test("assertSupportedRunner rejects unsupported platforms and architectures", () => {
-  assert.throws(() => __test.assertSupportedRunner("darwin", "arm64"), /supports Linux runners only/);
-  assert.throws(() => __test.assertSupportedRunner("linux", "arm"), /supports Linux x64 and arm64 runners only/);
-});
-
 test("renderConfig encodes the password and includes selected toggles", () => {
   const config = __test.renderConfig({
     serverName: "vpn.example.com:443",

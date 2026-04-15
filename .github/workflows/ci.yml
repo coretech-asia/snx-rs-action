@@ -31,3 +31,9 @@ jobs:
         run: |
           set -euo pipefail
           test -f dist/index.js
+
+      - name: Smoke test installer module
+        run: node scripts/smoke-install.js
+
+      - name: Verify snx-rs is on PATH
+        run: snx-rs --help

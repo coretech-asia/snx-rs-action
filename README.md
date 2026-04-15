@@ -55,6 +55,7 @@ The action disconnects the tunnel automatically in its post step after the job f
 - `login-type` must be provided explicitly. Discover it with `snx-rs -m info -s <server>`.
 - The action starts `sudo snx-rs -m standalone` in the background and assumes passwordless `sudo` is available on the runner.
 - The generated `snx-rs.conf` is written to a temporary directory, used only for the job, and removed in cleanup.
+- Installer logic is maintained in this repo and aligned with `coretech-asia/setup-snx-rs-action`, but this action remains publicly focused on VPN connect/disconnect.
 
 ## Development
 
